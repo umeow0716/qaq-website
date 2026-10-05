@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://qaq.umeow.eu.org/sitemap.xml
