@@ -1,17 +1,185 @@
 ---
-
+import '../styles/global.css';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<!doctype html>
+<html lang="zh-Hant" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#FDFCFF" />
+    <meta name="description" content="QAQ — an independent campus life assistant for National Taipei University of Technology students." />
+    <link rel="icon" type="image/png" href="/brand/qaq-mark.png" />
+    <link rel="canonical" href="https://qaq.umeow.eu.org/" />
+    <title>QAQ — 北科生活助手</title>
+    <script is:inline>
+      (() => {
+        const saved = localStorage.getItem('qaq-theme');
+        const theme = saved === 'light' || saved === 'dark'
+          ? saved
+          : matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
+  </head>
+
+  <body>
+    <main class="page">
+      <div class="wave-field" aria-hidden="true"><span></span></div>
+      <header class="site-header" aria-label="QAQ">
+        <a class="brand" href="/" aria-label="QAQ home">
+          <img class="brand-mark" src="/brand/qaq-mark.png" width="34" height="34" alt="" />
+          <span class="brand-name">QAQ</span>
+        </a>
+
+        <div class="header-actions">
+          <a class="header-button" href="https://github.com/umeow0716/qaq-app" target="_blank" rel="noreferrer" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 .7a11.5 11.5 0 0 0-3.64 22.4c.58.1.79-.25.79-.56v-2.23c-3.22.7-3.9-1.37-3.9-1.37-.52-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.72 1.27 3.38.97.1-.75.4-1.27.74-1.56-2.57-.29-5.28-1.29-5.28-5.68 0-1.25.45-2.28 1.19-3.08-.12-.3-.52-1.47.11-3.05 0 0 .97-.31 3.16 1.18a10.9 10.9 0 0 1 5.76 0c2.2-1.5 3.16-1.18 3.16-1.18.63 1.58.23 2.75.11 3.05.74.8 1.19 1.83 1.19 3.08 0 4.4-2.72 5.38-5.3 5.67.42.36.79 1.06.79 2.14v3.18c0 .31.2.67.8.56A11.5 11.5 0 0 0 12 .7Z"/></svg>
+            <span class="github-label">GitHub</span>
+          </a>
+          <button class="header-button" id="language-toggle" type="button" aria-label="Switch language">EN</button>
+          <button class="header-button" id="theme-toggle" type="button" aria-label="切換深色模式">
+            <svg class="theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/></svg>
+            <svg class="theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 15.2A8.4 8.4 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-inner">
+          <div class="hero-lockup">
+            <div class="hero-icon-tile" aria-hidden="true">
+              <img class="hero-mark" src="/brand/qaq-symbol.png" width="92" height="92" alt="" />
+            </div>
+            <p class="kicker" data-i18n="kicker">北科生活助手</p>
+          </div>
+          <h1 id="hero-title" data-i18n="title">北科生活，一個 QAQ 就夠。</h1>
+          <p class="hero-copy" data-i18n="lead">課表、成績、行事曆與校務系統，整理在你每天都能快速找到的地方。</p>
+
+          <div class="downloads" aria-label="Downloads">
+            <a class="download-button primary" data-download="windows-msi" href="https://github.com/umeow0716/qaq-app/releases/latest">
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M3 4.1 10.5 3v8.3H3V4.1Zm8.5-1.25L21 1.5v9.8h-9.5V2.85ZM3 12.3h7.5v8.35L3 19.6v-7.3Zm8.5 0H21v10.2l-9.5-1.34V12.3Z"/></svg>
+              <span class="button-copy"><span class="button-title" data-i18n="windowsInstall">Windows 安裝版</span><span class="button-meta">MSI · x64</span></span>
+            </a>
+            <a class="download-button" data-download="windows-zip" href="https://github.com/umeow0716/qaq-app/releases/latest">
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M5 19h14"/></svg>
+              <span class="button-copy"><span class="button-title" data-i18n="windowsPortable">Windows 免安裝</span><span class="button-meta">ZIP · x64</span></span>
+            </a>
+            <a class="download-button" data-download="linux-appimage" href="https://github.com/umeow0716/qaq-app/releases/latest">
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="m7 9 3 3-3 3m5 0h5"/></svg>
+              <span class="button-copy"><span class="button-title">Linux AppImage</span><span class="button-meta">AppImage · x64</span></span>
+            </a>
+            <a class="download-button" data-download="linux-deb" href="https://github.com/umeow0716/qaq-app/releases/latest">
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l3 3v15H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg>
+              <span class="button-copy"><span class="button-title">Linux Debian</span><span class="button-meta">DEB · amd64</span></span>
+            </a>
+            <a class="download-button" data-platform="play" href="https://play.google.com/store/apps/details?id=dev.umeow.qaq" target="_blank" rel="noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="m3.7 2.75 10.07 9.2-10.05 9.28A2.1 2.1 0 0 1 3 19.64V4.34c0-.63.26-1.2.7-1.59Zm11.3 10.3 2.66 2.43-10.5 5.94L15 13.05Zm3.85-3.5 1.54.87c.81.46.81 1.63 0 2.09l-1.52.86-2.63-2.4 2.61-2.42ZM7.2 2.57l10.47 5.91L15 10.93 7.2 2.57Z"/></svg>
+              <span class="button-copy"><span class="button-title">Google Play</span><span class="button-meta">Android</span></span>
+            </a>
+          </div>
+
+          <p class="release-line"><span data-i18n="latest">最新版本</span> <a id="release-link" href="https://github.com/umeow0716/qaq-app/releases/latest">GitHub Releases</a></p>
+        </div>
+      </section>
+
+      <p class="disclaimer" data-i18n="note">QAQ 為獨立維護的社群專案，並非國立臺北科技大學官方應用程式。</p>
+    </main>
+
+    <script is:inline>
+      const translations = {
+        'zh-Hant': {
+          kicker: '北科生活助手',
+          title: '北科生活，一個 QAQ 就夠。',
+          lead: '課表、成績、行事曆與校務系統，整理在你每天都能快速找到的地方。',
+          windowsInstall: 'Windows 安裝版',
+          windowsPortable: 'Windows 免安裝',
+          latest: '最新版本',
+          note: 'QAQ 為獨立維護的社群專案，並非國立臺北科技大學官方應用程式。',
+          themeLight: '切換亮色模式',
+          themeDark: '切換深色模式',
+        },
+        en: {
+          kicker: 'Campus life assistant for NTUT',
+          title: 'Everything NTUT, one QAQ away.',
+          lead: 'Timetable, grades, calendar and campus services — kept close, fast, and easy to reach.',
+          windowsInstall: 'Windows installer',
+          windowsPortable: 'Windows portable',
+          latest: 'Latest release',
+          note: 'QAQ is an independently maintained community project and is not an official NTUT application.',
+          themeLight: 'Switch to light mode',
+          themeDark: 'Switch to dark mode',
+        },
+      };
+
+      const root = document.documentElement;
+      const languageButton = document.querySelector('#language-toggle');
+      const themeButton = document.querySelector('#theme-toggle');
+      const themeMeta = document.querySelector('meta[name="theme-color"]');
+      const releaseLink = document.querySelector('#release-link');
+      const releaseFallback = 'https://github.com/umeow0716/qaq-app/releases/latest';
+      let language = localStorage.getItem('qaq-language') === 'en' ? 'en' : 'zh-Hant';
+
+      const updateThemeLabel = () => {
+        const dark = root.dataset.theme === 'dark';
+        themeButton?.setAttribute('aria-label', dark ? translations[language].themeLight : translations[language].themeDark);
+      };
+
+      const applyLanguage = (next) => {
+        language = next;
+        root.lang = next;
+        localStorage.setItem('qaq-language', next);
+        document.querySelectorAll('[data-i18n]').forEach((node) => {
+          const key = node.dataset.i18n;
+          if (key && translations[next][key]) node.textContent = translations[next][key];
+        });
+        if (languageButton) {
+          languageButton.textContent = next === 'zh-Hant' ? 'EN' : '中';
+          languageButton.setAttribute('aria-label', next === 'zh-Hant' ? 'Switch to English' : '切換為繁體中文');
+        }
+        updateThemeLabel();
+      };
+
+      languageButton?.addEventListener('click', () => applyLanguage(language === 'zh-Hant' ? 'en' : 'zh-Hant'));
+      themeButton?.addEventListener('click', () => {
+        const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = next;
+        root.style.colorScheme = next;
+        localStorage.setItem('qaq-theme', next);
+        themeMeta?.setAttribute('content', next === 'dark' ? '#1A1C1E' : '#FDFCFF');
+        updateThemeLabel();
+      });
+
+      const hydrateReleaseLinks = async () => {
+        try {
+          const response = await fetch('https://api.github.com/repos/umeow0716/qaq-app/releases/latest', {
+            headers: { Accept: 'application/vnd.github+json' },
+          });
+          if (!response.ok) return;
+          const release = await response.json();
+          const assets = Array.isArray(release.assets) ? release.assets : [];
+          const patterns = {
+            'windows-msi': /-windows-x64\.msi$/i,
+            'windows-zip': /-windows-x64\.zip$/i,
+            'linux-appimage': /-linux-x86_64\.AppImage$/i,
+            'linux-deb': /-linux-amd64\.deb$/i,
+          };
+          for (const [key, pattern] of Object.entries(patterns)) {
+            const asset = assets.find((entry) => pattern.test(entry.name));
+            const anchor = document.querySelector(`[data-download="${key}"]`);
+            if (asset?.browser_download_url && anchor) anchor.href = asset.browser_download_url;
+          }
+          if (releaseLink) {
+            releaseLink.href = release.html_url || releaseFallback;
+            releaseLink.textContent = release.tag_name || 'GitHub Releases';
+          }
+        } catch {}
+      };
+
+      applyLanguage(language);
+      updateThemeLabel();
+      hydrateReleaseLinks();
+    </script>
+  </body>
 </html>
